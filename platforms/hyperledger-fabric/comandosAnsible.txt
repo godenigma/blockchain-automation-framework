@@ -1,0 +1,4 @@
+ansible-playbook ../shared/configuration/site.yaml -e "@./configuration/samples/network-minikube.yaml"
+
+ansible-playbook ../shared/configuration/site.yaml -e "@./configuration/samples/network-minikube.yaml" -e "reset=true"
+
