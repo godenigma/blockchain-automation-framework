@@ -1,0 +1,35 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: manufacturer-expressapi
+  namespace: manufacturer-net
+  annotations:
+    fluxcd.io/automated: "false"
+spec:
+  chart:
+    path: examples/supplychain-app/charts/expressapp
+    git: "https://github.com/godenigma/blockchain-automation-framework.git"
+    ref: "local"
+  releaseName: manufacturerfabric-expressapi
+  values:
+    nodeName: manufacturer-expressapi
+    metadata:
+      namespace: manufacturer-net
+    replicaCount: 1
+    expressapp:
+      serviceType: ClusterIP
+      image: index.docker.io/hyperledgerlabs/supplychain_fabric:express_app_latest
+      pullPolicy: Always
+      pullSecrets: regcred
+      nodePorts:
+        port: 3000
+        targetPort: 3000
+        name: tcp
+      env:
+        apiUrl: http://manufacturer-restserver.manufacturer-net:20001/api/v1
+    proxy:
+      provider: none
+      name: manufacturer
+      type: fabric
+      external_url_suffix: develop.local.com
+      peer_name: peer0
