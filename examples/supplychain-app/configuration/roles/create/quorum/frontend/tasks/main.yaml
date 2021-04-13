@@ -24,9 +24,9 @@
     name: "{{ peer_data.name }}"
     charts_dir: "{{ organization_data.gitops.chart_source }}"
     peer_name: "{{ peer_data.name }}"
-    peer_frontend_port: "{{ peer_data.frontend.port }}"
+    # peer_frontend_port: "{{ peer_data.frontend.port }}"
     peer_expressapi_port: "{{ peer_data.expressapi.port }}"
-    peer_frontend_targetport: "{{ peer_data.frontend.targetPort }}"
+    # peer_frontend_targetport: "{{ peer_data.frontend.targetPort }}"
     ambassador_secret: "{{ peer_data.name }}-ambassador-certs"
   loop: "{{ organization_data.services.peers }}"
   loop_control:
