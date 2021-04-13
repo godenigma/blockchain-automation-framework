@@ -26,7 +26,7 @@
     peer_name: "{{ organization_data.name | lower }}"
     peer_frontend_port: "{{ peer_data.frontend.port }}"
     peer_expressapi_port: "{{ peer_data.expressapi.port }}"
-    peer_frontend_targetport: "{{ peer_data.frontend.targetPort }}"
+    # peer_frontend_targetport: "{{ peer_data.frontend.targetPort }}"
     ambassador_secret: "{{ peer_data.name }}-{{ organization_data.name | lower }}-net-ambassador-certs"
     react_app_gmaps_key: "{{ organization_data.app.google_maps_api }}"
   loop: "{{ organization_data.services.peers }}"
