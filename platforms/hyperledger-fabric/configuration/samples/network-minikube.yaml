@@ -29,7 +29,7 @@ network:
       name: orderer1
       org_name: supplychain                 # org_name should match one organization definition below in organizations: key            
       uri: orderer1.supplychain-net:7050    # Internal URI for orderer which should be reachable by all peers
-      certificate: /home/blockchain-automation-framework/build/orderer1.crt   # the directory should be writable
+      certificate: /home/jose/blockchain-automation-framework/build/orderer1.crt   # the directory should be writable
   
   # The channels defined for a network with participating peers in each channel
   channels:
@@ -89,26 +89,26 @@ network:
       k8s:
         region: "cluster_region"
         context: "minikube"
-        config_file: "/home/blockchain-automation-framework/build/config"
+        config_file: "/home/jose/.kube/config"
 
       # Hashicorp Vault server address and root-token. Vault should be unsealed.
       # Do not check-in root_token
       vault:
-        url: "vault_url"
-        root_token: "vault_root_token"
+        url: "http://10.200.0.123:8200"
+        root_token: "s.34wOVIEDkK9gKWeRAdGbh6Zw"
         secret_path: "secret"
       # Git Repo details which will be used by GitOps/Flux.
       # Do not check-in git_access_token
       gitops:
         git_protocol: "https" # Option for git over https or ssh
-        git_url: "https://github.com/<username>/blockchain-automation-framework.git"  # Gitops https or ssh url for flux value files 
+        git_url: "https://github.com/godenigma/blockchain-automation-framework.git"     # Gitops https or ssh url for flux value files 
         branch: "local"                                                                 # Git branch where release is being made
         release_dir: "platforms/hyperledger-fabric/releases/dev"                        # Relative Path in the Git repo for flux sync per environment. 
         chart_source: "platforms/hyperledger-fabric/charts"                             # Relative Path where the Helm charts are stored in Git repo
-        git_repo: "github.com/<username>/blockchain-automation-framework.git"       # Gitops git repository URL for git push  (without https://)
-        username: "github_username"                                                     # Git user who has rights to check-in in all branches
-        password: "github_token"                                                        # Git Server user password or token
-        email: "github_email"                                                           # Email to use in git config
+        git_repo: "github.com/godenigma/blockchain-automation-framework.git"            # Gitops git repository URL for git push  (without https://)
+        username: "godenigma"                                                           # Git user who has rights to check-in in all branches
+        password: "Ka5ikUUzrrAdaqVo31z5"                                                # Git Server user password or token
+        email: "jdcastelo@godenigma.es"                                                 # Email to use in git config
         private_key: "/home/blockchain-automation-framework/build/gitops"               # Optional (required when protocol is ssh) : Path to private key file which has write-access to the git repo
      
       # Services maps to the pods that will be deployed on the k8s cluster
@@ -160,26 +160,26 @@ network:
       k8s:
         region: "cluster_region"
         context: "minikube"
-        config_file: "/home/blockchain-automation-framework/build/config"
+        config_file: "/home/jose/.kube/config"
 
       # Hashicorp Vault server address and root-token. Vault should be unsealed.
       # Do not check-in root_token
       vault:
-        url: "vault_url"
-        root_token: "vault_root_token"
+        url: "http://10.200.0.123:8200"
+        root_token: "s.34wOVIEDkK9gKWeRAdGbh6Zw"
         secret_path: "secret"
       # Git Repo details which will be used by GitOps/Flux.
       # Do not check-in git_access_token
       gitops:
         git_protocol: "https" # Option for git over https or ssh
-        git_url: "https://github.com/<username>/blockchain-automation-framework.git"  # Gitops https or ssh url for flux value files 
+        git_url: "https://github.com/godenigma/blockchain-automation-framework.git"     # Gitops https or ssh url for flux value files 
         branch: "local"                                                                 # Git branch where release is being made
         release_dir: "platforms/hyperledger-fabric/releases/dev"                        # Relative Path in the Git repo for flux sync per environment. 
         chart_source: "platforms/hyperledger-fabric/charts"                             # Relative Path where the Helm charts are stored in Git repo
-        git_repo: "github.com/<username>/blockchain-automation-framework.git"       # Gitops git repository URL for git push  (without https://)
-        username: "github_username"                                                     # Git user who has rights to check-in in all branches
-        password: "github_token"                                                        # Git Server user password or token
-        email: "github_email"                                                           # Email to use in git config
+        git_repo: "github.com/godenigma/blockchain-automation-framework.git"            # Gitops git repository URL for git push  (without https://)
+        username: "godenigma"                                                           # Git user who has rights to check-in in all branches
+        password: "Ka5ikUUzrrAdaqVo31z5"                                                # Git Server user password or token
+        email: "jdcastelo@godenigma.es"                                                 # Email to use in git config
         private_key: "/home/blockchain-automation-framework/build/gitops"               # Optional (required when protocol is ssh) : Path to private key file which has write-access to the git repo
 
       # The participating nodes are peers
@@ -215,9 +215,9 @@ network:
             version: "1"           # This has to be replaced with the version of the chaincode (do NOT use .)
             maindirectory: "cmd"   # The main directory where chaincode is needed to be placed
             repository:
-              username: "github_username"          # Git user
-              password: "github_token"             # Git token or password of above user
-              url: "github.com/<username>/blockchain-automation-framework.git"
+              username: "godenigma"                                                     # Git user
+              password: "Ka5ikUUzrrAdaqVo31z5"                                          # Git token or password of above user
+              url: "github.com/godenigma/blockchain-automation-framework.git"
               branch: develop
               path: "examples/supplychain-app/fabric/chaincode_rest_server/chaincode/"  #The path to the chaincode in the repo
             arguments: '\"init\",\"\"'                                                  #Arguments to be passed along with the chaincode parameters
@@ -238,32 +238,32 @@ network:
         certificate: file/server.crt
       
       cloud_provider: minikube   # Options: minikube, azure, gcp
-        
+      
       # Kubernetes cluster deployment variables. The config file path and name has to be provided in case
       # the cluster has already been created.
       k8s:
         region: "cluster_region"
         context: "minikube"
-        config_file: "/home/blockchain-automation-framework/build/config"
+        config_file: "/home/jose/.kube/config"
 
       # Hashicorp Vault server address and root-token. Vault should be unsealed.
       # Do not check-in root_token
       vault:
-        url: "vault_url"
-        root_token: "vault_root_token"
+        url: "http://10.200.0.123:8200"
+        root_token: "s.34wOVIEDkK9gKWeRAdGbh6Zw"
         secret_path: "secret"
       # Git Repo details which will be used by GitOps/Flux.
       # Do not check-in git_access_token
       gitops:
         git_protocol: "https" # Option for git over https or ssh
-        git_url: "https://github.com/<username>/blockchain-automation-framework.git"  # Gitops https or ssh url for flux value files 
+        git_url: "https://github.com/godenigma/blockchain-automation-framework.git"     # Gitops https or ssh url for flux value files 
         branch: "local"                                                                 # Git branch where release is being made
         release_dir: "platforms/hyperledger-fabric/releases/dev"                        # Relative Path in the Git repo for flux sync per environment. 
         chart_source: "platforms/hyperledger-fabric/charts"                             # Relative Path where the Helm charts are stored in Git repo
-        git_repo: "github.com/<username>/blockchain-automation-framework.git"       # Gitops git repository URL for git push  (without https://)
-        username: "github_username"                                                     # Git user who has rights to check-in in all branches
-        password: "github_token"                                                        # Git Server user password or token
-        email: "github_email"                                                           # Email to use in git config
+        git_repo: "github.com/godenigma/blockchain-automation-framework.git"            # Gitops git repository URL for git push  (without https://)
+        username: "godenigma"                                                           # Git user who has rights to check-in in all branches
+        password: "Ka5ikUUzrrAdaqVo31z5"                                                # Git Server user password or token
+        email: "jdcastelo@godenigma.es"                                                 # Email to use in git config
         private_key: "/home/blockchain-automation-framework/build/gitops"               # Optional (required when protocol is ssh) : Path to private key file which has write-access to the git repo
 
       services:
@@ -297,9 +297,9 @@ network:
             version: "1"           # This has to be replaced with the version of the chaincode (do NOT use .)
             maindirectory: "cmd"   # The main directory where chaincode is needed to be placed
             repository:
-              username: "github_username"          # Git user
-              password: "github_token"             # Git token or password of above user
-              url: "github.com/<username>/blockchain-automation-framework.git"
+              username: "godenigma"                                                     # Git user
+              password: "Ka5ikUUzrrAdaqVo31z5"                                          # Git token or password of above user
+              url: "github.com/godenigma/blockchain-automation-framework.git"
               branch: develop
               path: "examples/supplychain-app/fabric/chaincode_rest_server/chaincode/"  #The path to the chaincode in the repo
             arguments: '\"init\",\"\"'                                                  #Arguments to be passed along with the chaincode parameters
