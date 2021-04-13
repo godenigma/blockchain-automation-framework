@@ -5,7 +5,7 @@ network:
   # to join an existing network.
   type: fabric
   version: 1.4.4                 # currently tested 1.4.0, 1.4.4 and 2.0.0
-  frontend: enabled
+  # frontend: enabled
 
   #Environment section for Kubernetes setup
   env:
