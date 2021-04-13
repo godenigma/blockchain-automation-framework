@@ -302,6 +302,9 @@ network:
           expressapi:
             targetPort: 3000
             port: 3000
+          frontend:
+            port: 3400
+            targetPort: 3400
           chaincode:
             name: "supplychain"    # This has to be replaced with the name of the chaincode
             version: "1"           # This has to be replaced with the version of the chaincode (do NOT use .)
