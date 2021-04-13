@@ -12,10 +12,10 @@ RUN apt-get update
 RUN apt-get install -y nginx
 
 #make scripts executable
-RUN chmod +x generate_static_files.sh
-RUN chmod +x nginx_setup.sh
+#RUN chmod +x generate_static_files.sh
+#RUN chmod +x nginx_setup.sh
 
 # Expose port
 EXPOSE 80
 
-CMD ["sh", "-c", "./generate_static_files.sh && ./nginx_setup.sh"]
+CMD ["sh", "-c", "/home/jose/proyectos/blockchain-automation-framework/examples/supplychain-app/supplychain-frontend/generate_static_files.sh && /home/jose/proyectos/blockchain-automation-framework/examples/supplychain-app/supplychain-frontend/nginx_setup.sh"]
