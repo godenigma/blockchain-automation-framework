@@ -19,8 +19,8 @@ spec:
     frontend:
       serviceType: ClusterIP
       nodePorts:
-        port: 3000
-        targetPort: 3000
+        port: 3300
+        targetPort: 3300
       image: index.docker.io/hyperledgerlabs/supplychain_frontend:latest
       pullPolicy: Always
       pullSecrets: regcred
